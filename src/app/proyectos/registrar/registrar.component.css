@@ -1,0 +1,7 @@
+/* Estilos básicos para el formulario y las cards, responsive con Bootstrap */
+.dashboard-wrapper { min-height: 100vh; }
+.card { margin-bottom: 1rem; }
+.table th, .table td { vertical-align: middle; }
+@media (max-width: 768px) {
+  .dashboard-wrapper { flex-direction: column; }
+}

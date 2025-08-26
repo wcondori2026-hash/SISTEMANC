@@ -1,0 +1,14 @@
+.acciones-cotizacion {
+	white-space: nowrap;
+}
+.acciones-cotizacion .btn {
+	min-width: 32px;
+	padding-left: 0.4rem;
+	padding-right: 0.4rem;
+	font-size: 0.85rem;
+}
+
+.dashboard-wrapper { min-height: 100vh; }
+.table th, .table td { font-size: 0.95rem; }
+.btn { min-width: 140px; }
+.pagination .page-link { min-width: 32px; text-align: center; }

@@ -1,0 +1,3 @@
+.dashboard-wrapper { min-height: 100vh; }
+.table th, .table td { font-size: 0.95rem; }
+.btn { min-width: 140px; }

@@ -1,0 +1,258 @@
+<div class="dashboard-wrapper d-flex flex-column flex-md-row">
+  <app-menu [menuActivo]="menuActivo" (cerrar)="cerrarMenu()"></app-menu>
+  <div class="dashboard-main flex-grow-1">
+    <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
+    <section class="dashboard-content main__form mt-3">
+      <div class="container-fluid px-2 px-md-5">
+        <!-- Barra de botones de acción -->
+        <div class="d-flex flex-wrap align-items-center mb-3 gap-1">
+          <button class="btn btn-primary fw-bold d-flex align-items-center gap-2">
+            <i class="fa fa-check"></i> Grabar
+          </button>
+          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalActividades()">
+            <i class="fa fa-table"></i> Actividades
+          </button>
+          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalGastos()">
+            <i class="fa fa-table"></i> Gastos
+          </button>
+          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalPagos()">
+            <i class="fa fa-table"></i> Pagos Obra
+          </button>
+            <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalResumen()">
+              <i class="fa fa-table"></i> Resumen de Obra
+            </button>
+          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalAnexos()">
+            <i class="fa fa-upload"></i> Cargar Anexos
+          </button>
+          <button class="btn btn-primary d-flex align-items-center gap-2">
+            <i class="fa fa-ban"></i> Cerrar
+          </button>
+          <button class="btn btn-primary d-flex align-items-center gap-2">
+            <i class="fa fa-arrow-right"></i> Salir
+          </button>
+          <div class="dropdown ms-md-auto mt-2 mt-md-0">
+            <button class="btn btn-danger dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Nuevo
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">En Proceso</a></li>
+              <li><a class="dropdown-item" href="#">Finalizado</a></li>
+              <li><a class="dropdown-item" href="#">Pendiente</a></li>
+              <li><a class="dropdown-item" href="#">Anulado</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- Aquí va el contenido del formulario, basado en la imagen adjunta -->
+        <div class="card mb-3 shadow-sm">
+          <div class="card-header fw-bold">Datos del Proyecto / Obra</div>
+          <div class="card-body p-3">
+            <!-- Estructura responsive con Bootstrap -->
+            <form>
+              <div class="row g-2">
+                <div class="col-12 col-md-3 position-relative">
+                  <label class="form-label">Código de Cotización:</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)]="cotizacionInput" (input)="buscarCotizacion()"
+                      name="cotizacionInput" autocomplete="off" />
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                  </div>
+                  <ul class="list-group position-absolute w-100" *ngIf="cotizacionOpciones.length">
+                    <li class="list-group-item list-group-item-action" *ngFor="let op of cotizacionOpciones"
+                      (click)="cotizacionInput = op; cotizacionOpciones = []">{{op}}</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Proyecto / Obra:</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Tipo de proyecto / obra :</label>
+                  <select class="form-select">
+                    <option>Seleccione</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-3 position-relative">
+                  <label class="form-label">RUC/DNI:</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)]="documentoInput" (input)="buscarDocumento()"
+                      name="documentoInput" autocomplete="off" />
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                  </div>
+                  <ul class="list-group position-absolute w-100" *ngIf="documentoOpciones.length">
+                    <li class="list-group-item list-group-item-action" *ngFor="let op of documentoOpciones"
+                      (click)="documentoInput = op; documentoOpciones = []">{{op}}</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-6 position-relative">
+                  <label class="form-label">Cliente / Razón social:</label>
+                  <input type="text" class="form-control" [(ngModel)]="clienteInput" (input)="buscarCliente()"
+                    name="clienteInput" autocomplete="off" />
+                  <ul class="list-group position-absolute w-100" *ngIf="clienteOpciones.length">
+                    <li class="list-group-item list-group-item-action" *ngFor="let op of clienteOpciones"
+                      (click)="clienteInput = op; clienteOpciones = []">{{op}}</li>
+                  </ul>
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Tipo de suelo :</label>
+                  <select class="form-select">
+                    <option>Arenoso/Rocoso/Arcilloso/Cascajo</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Costo de cotización :</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="form-label">IGV :</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Costo total cotización :</label>
+                  <input type="text" class="form-control" />
+                </div>
+
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Fecha Inicio Programado :</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="/ /" />
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Fecha Finalización Programado :</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="/ /" />
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Fecha Inicio Ejecutado :</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="/ /" />
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Fecha Finalización Ejecutado :</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="/ /" />
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Departamento :</label>
+                  <select class="form-select">
+                    <option>Seleccione</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Provincia :</label>
+                  <select class="form-select">
+                    <option>Seleccione</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="form-label">Distrito :</label>
+                  <select class="form-select">
+                    <option>Seleccione</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Dirección :</label>
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label">Descripción :</label>
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Secciones de responsables e integrantes -->
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="card mb-3">
+              <div class="card-header fw-bold">Responsables</div>
+              <div class="card-body">
+                <!-- Select y tabla de responsables -->
+                <div class="mb-2">
+                  <label class="form-label">Responsable:</label>
+                  <div class="d-flex align-items-center gap-2">
+                    <select class="form-select flex-grow-1" [(ngModel)]="responsableSeleccionado" name="responsableSeleccionado">
+                      <option [ngValue]="null">Seleccione</option>
+                      <option *ngFor="let r of responsables" [ngValue]="r.id">{{r.nombre}}</option>
+                    </select>
+                    <button class="btn btn-outline-primary">Agregar</button>
+                  </div>
+                </div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Nro</th>
+                      <th>Nombres Ap.</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Giacomo Guilizzoni Founder & CEO</td>
+                      <td><button class="btn btn-sm btn-outline-danger">&times;</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Marco Botton Tuttofare</td>
+                      <td><button class="btn btn-sm btn-outline-danger">&times;</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="card mb-3">
+              <div class="card-header fw-bold">Integrantes</div>
+              <div class="card-body">
+                <!-- Select y tabla de integrantes -->
+                <div class="mb-2">
+                  <label class="form-label">Integrantes:</label>
+                  <div class="d-flex align-items-center gap-2">
+                    <select class="form-select flex-grow-1" [(ngModel)]="integranteSeleccionado" name="integranteSeleccionado">
+                      <option [ngValue]="null">Seleccione</option>
+                      <option *ngFor="let i of integrantes" [ngValue]="i.id">{{i.nombre}}</option>
+                    </select>
+                    <button class="btn btn-outline-primary">Agregar</button>
+                  </div>
+                </div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Nro</th>
+                      <th>Nombres y Ap.</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Giacomo Guilizzoni Founder & CEO</td>
+                      <td><button class="btn btn-sm btn-outline-danger">&times;</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Marco Botton Tuttofare</td>
+                      <td><button class="btn btn-sm btn-outline-danger">&times;</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

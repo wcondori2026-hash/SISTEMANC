@@ -1,0 +1,165 @@
+<div class="dashboard-wrapper d-flex flex-column flex-md-row">
+  <app-menu [menuActivo]="menuActivo" (cerrar)="cerrarMenu()"></app-menu>
+  <div class="dashboard-main flex-grow-1">
+    <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
+    <section class="dashboard-content main__form mt-3">
+      <div class="container-fluid px-2 px-md-5">
+        <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+          <button class="btn btn-primary" (click)="grabar()"><i class="fa fa-save me-1"></i> Grabar</button>
+          <button class="btn btn-primary" (click)="cargarAnexos()"><i class="fa fa-upload me-1"></i> Carga Anexos</button>
+          <button class="btn btn-primary" (click)="cerrar()"><i class="fa fa-times me-1"></i> Cerrar</button>
+          <button class="btn btn-primary" (click)="salir()"><i class="fa fa-arrow-right me-1"></i> Salir</button>
+        </div>
+        <fieldset class="border rounded p-3 mb-3">
+          <legend class="float-none w-auto px-2">Datos Generales</legend>
+          <div class="row g-2 mb-2">
+            <div class="col-12 col-md-3">
+              <label class="form-label">Responsable :</label>
+              <select class="form-select"><option>Seleccione</option></select>
+            </div>
+            <div class="col-12 col-md-3">
+              <label class="form-label">Nro. Cotización :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-12 col-md-3">
+              <label class="form-label">Código Correlación :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-12 col-md-3">
+              <label class="form-label">Fecha :</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="/ /" />
+                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+
+          </div>
+          <div class="row g-2 mb-2">
+            <div class="col-12 col-md-3">
+              <label class="form-label">RUC/DNI :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Cliente / Razón social :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-12 col-md-3">
+              <label class="form-label">Forma de pago :</label>
+              <select class="form-select"><option>Seleccione</option></select>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">Empresa :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">Teléfono :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">Correo :</label>
+              <input type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="row g-2 mb-2">
+            <div class="col-12 col-md-4">
+              <label class="form-label">Departamento :</label>
+              <select class="form-select"><option>Seleccione</option></select>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">Provincia :</label>
+              <select class="form-select"><option>Seleccione</option></select>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">Distrito :</label>
+              <select class="form-select"><option>Seleccione</option></select>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="border rounded p-3 mb-3">
+          <legend class="float-none w-auto px-2">Cotización</legend>
+          <div class="row g-2 mb-2">
+            <div class="col-md-3">
+              <label class="form-label">Producto / Servicio :</label>
+              <select class="form-select"><option>Seleccione</option></select>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Cantidad :</label>
+              <input type="number" class="form-control" value="3" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Unidad de Medida :</label>
+              <select class="form-select"><option>un, m2, m3</option></select>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Precio Unitario :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-md-1">
+              <label class="form-label">IGV % :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Descuento % :</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="col-md-1 d-flex align-items-end">
+              <button class="btn btn-outline-secondary w-100">Agregar</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Cod.</th>
+                  <th>Descripción</th>
+                  <th>Cant.</th>
+                  <th>Und</th>
+                  <th>P. Unitario</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of productos">
+                  <td>{{p.cod}}</td>
+                  <td>{{p.descripcion}}</td>
+                  <td>{{p.cantidad}}</td>
+                  <td>{{p.unidad}}</td>
+                  <td>S/ {{p.precio | number:'1.2-2'}}</td>
+                  <td>S/ {{p.total | number:'1.2-2'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </fieldset>
+        <div class="row g-2 mb-2">
+          <div class="col-md-6">
+            <label class="form-label">Nota :</label>
+            <textarea class="form-control" rows="2"></textarea>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Consideraciones :</label>
+            <textarea class="form-control" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="row g-2 mb-2 justify-content-end">
+          <div class="col-md-2">
+            <label class="form-label">Subtotal :</label>
+            <input type="text" class="form-control text-end" [value]="subtotal" readonly />
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">IGV :</label>
+            <input type="text" class="form-control text-end" [value]="igv" readonly />
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Descuento :</label>
+            <input type="text" class="form-control text-end" [value]="descuento" readonly />
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Total :</label>
+            <input type="text" class="form-control text-end" [value]="total" readonly />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

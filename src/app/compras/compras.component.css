@@ -1,0 +1,194 @@
+/* Barra superior de botones estilo imagen */
+.compras-toolbar {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  border: none;
+}
+.compras-btn {
+  background: #1976d2;
+  border: 1px solid #1976d2;
+  color: #fff;
+  min-width: 160px;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: background 0.2s;
+}
+.compras-btn:hover {
+  background: #1453a6;
+  color: #fff;
+}
+/* Padding extra para la tabla de resultados */
+.compras-table-padding th,
+.compras-table-padding td {
+  padding: 1rem 0.75rem;
+}
+
+/* Card de resultado */
+.compras-resultado-card {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 8px;
+}
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+.badge {
+  font-size: 1rem;
+  font-weight: 500;
+}
+/* Card de filtros */
+.estado-nuevo {
+  background: #1976d2;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.estado-anulado {
+  background: #d32f2f;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.estado-aceptado {
+  background: #388e3c;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.compras-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dashboard-grid {
+   grid-template-columns: repeat(2, 1fr); /* Ejemplo para escritorio */
+  gap: 24px;
+  padding: 0 16px;
+}
+
+/* Filtros del módulo de compras */
+.compras-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: flex-end;
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.compras-filtro-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  flex: 1 1 180px;
+}
+
+.compras-filtro-item label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: #2c4686;
+  font-weight: 500;
+}
+
+.compras-filtro-item input,
+.compras-filtro-item select,
+.compras-filtro-item .mat-form-field {
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.compras-filtros .mat-form-field {
+  width: 100%;
+}
+
+.compras-filtros .mat-form-field-appearance-fill .mat-form-field-flex {
+  background: #fff;
+}
+
+.compras-filtros .mat-form-field-appearance-fill .mat-form-field-outline {
+  color: #bfc0c5;
+}
+
+.compras-filtros .mat-form-field-appearance-fill .mat-form-field-infix {
+  padding: 0.3rem 0.75rem;
+}
+
+.compras-filtros .mat-form-field-label {
+  color: #2c4686;
+}
+
+.compras-filtros .mat-form-field-underline {
+  background-color: #bfc0c5;
+}
+
+.compras-filtros .mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 4px;
+}
+
+/* Responsive para filtros */
+@media (max-width: 900px) {
+  .compras-filtros {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+  .compras-filtro-item {
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .compras-mobile-container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .compras-toolbar {
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+  }
+  .compras-btn {
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .compras-filtros-card,
+  .compras-resultado-card {
+    border-radius: 10px;
+  }
+  .compras-filtros .row > .col-6,
+  .compras-filtros .row > .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .compras-filtros .form-label {
+    font-size: 0.95rem;
+  }
+  .compras-table-padding td,
+  .compras-table-padding th {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.95rem;
+  }
+  .pagination {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .compras-filtros .form-control,
+  .compras-filtros .form-select {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}

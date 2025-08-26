@@ -1,0 +1,567 @@
+/* Grupo de cada acción rápida */
+.action-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 18px;
+  border-radius: 12px;
+  padding: 12px 8px 8px 8px;
+}
+
+.dashboard-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0px;
+  border: none;
+  border-radius: 0;
+  padding: 0 24px;
+  box-shadow: none;
+}
+
+/* Círculo de icono y plus */
+.action-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e3f2fd 60%, #fff 100%);
+  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.10);
+  margin-bottom: 8px;
+  border: 2px solid #1976d2;
+}
+.action-circle i.fas.fa-shopping-cart {
+  font-size: 2.3rem;
+  color: #1976d2;
+  margin: 0;
+}
+.action-circle .action-plus {
+  position: absolute;
+  right: -12px;
+  bottom: -12px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #16a34a 80%, #43ea7a 100%);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.18);
+  border: 2px solid #fff;
+  z-index: 2;
+}
+
+/* Etiqueta debajo del círculo */
+.action-label {
+  font-size: 1.08rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 14px;
+  color: #1976d2;
+  font-family: 'Gotham', Arial, Helvetica, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* Tarjeta de bienvenida */
+.dashboard-welcome-card {
+  background: linear-gradient(135deg, #1976d2 60%, #43ea7a 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+  padding: 24px 20px 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Título de sección */
+.dashboard-section-title {
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  padding-left: 2px;
+  font-family: 'Gotham', Arial, Helvetica, sans-serif;
+}
+
+/* Tarjeta general dashboard */
+.dashboard-card {
+  border: 1px solid #9a9a9b;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+  padding: 24px 20px;
+  margin: 1%;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Tarjeta secundaria dashboard */
+.dashboard-card-tres {
+  padding: 24px 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1.5px solid #1976d2;
+  border-radius: 16px;
+  background: #f5f5f5;
+}
+.dashboard-card h3 {
+  font-size: 1.22rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+  font-family: 'Gotham', Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-card-sub {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-left: 12px;
+}
+.dashboard-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1976d2;
+  font-family: 'Gotham', Arial, Helvetica, sans-serif;
+}
+.dashboard-bar-group, .dashboard-expense-details, .dashboard-invoice-details, .dashboard-bolsa-details {
+  margin-bottom: 8px;
+}
+.dashboard-bar-label, .dashboard-expense-label, .dashboard-invoice-label, .dashboard-bolsa-label {
+  font-size: 0.95rem;
+  color: #888;
+  margin-left: 6px;
+}
+.dashboard-bar {
+  height: 16px;
+  border-radius: 8px;
+  margin: 4px 0 8px 0;
+  background: #e0e0e0;
+}
+.dashboard-bar-ingresos {
+  background: #1976d2;
+}
+.dashboard-bar-egresos {
+  background: #ff9800;
+}
+.dashboard-bar-pagado {
+  background: #388e3c;
+}
+.dashboard-bar-nuevo {
+  background: #fbc02d;
+}
+.dashboard-bar-boleta {
+  background: #1976d2;
+}
+.dashboard-bar-libre {
+  background: #888;
+}
+.dashboard-link {
+  color: #1976d2;
+  font-size: 1.05rem;
+  text-decoration: underline;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+}
+
+
+/* Row for GASTOS, FACTURAS, and BOLETA/LIBRE dashboards */
+.dashboard-row.dashboard-grid-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 18px;
+  padding: 18px 16px;
+}
+
+/* Projects dashboard styles */
+.dashboard-projects-legend {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.98rem;
+  gap: 6px;
+}
+.legend-color {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+.legend-costo {
+  background: #1976d2;
+  border: 2px solid #e0e0e0;
+}
+.legend-gasto {
+  background: #ff9800;
+  border: 2px solid #e0e0e0;
+}
+.dashboard-projects-bars {
+  margin-bottom: 12px;
+}
+.project-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.project-label {
+  width: 120px;
+  font-size: 1.02rem;
+  margin-right: 12px;
+}
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 70%;
+}
+.bar {
+  height: 18px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  margin-bottom: 0;
+}
+.bar-costo {
+  background: #1976d2;
+}
+.bar-gasto {
+  background: #ff9800;
+}
+.dashboard-projects-axis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 8px;
+  margin-left: 132px;
+}
+
+/* Ganancias y pérdidas dashboard styles */
+.dashboard-gains-sub {
+  font-size: 0.98rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+.dashboard-gains-bars {
+  margin-bottom: 8px;
+}
+.gains-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.gains-label {
+  font-size: 0.98rem;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+.gains-bar {
+  height: 18px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  margin-right: 8px;
+  min-width: 120px;
+}
+.gains-bar-ingresos {
+  background: #1976d2;
+}
+.gains-bar-egresos {
+  background: #ff9800;
+}
+.dashboard-row.dashboard-grid {
+  margin-top: 18px;
+}
+.ganacias-perdidas h3{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Dashboard grid layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Ejemplo para escritorio */
+  gap: 24px;
+  padding: 0 16px;
+}
+
+/* Stretch projects and gains dashboards and apply background */
+.dashboard-projects {
+  grid-column: 1 / span 1;
+}
+.dashboard-gains {
+  grid-column: 2 / span 1;
+  background: #f5f5f5;
+}
+
+.dashboard-projects, .dashboard-gains {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid #9a9a9b;
+  border-radius: 8px;
+}
+
+/* Facturas dashboard styles */
+.dashboard-invoice-details {
+  margin-bottom: 8px;
+}
+.invoice-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4px;
+}
+.invoice-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 48%;
+}
+.invoice-amount {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+.invoice-label {
+  font-size: 0.98rem;
+  color: #888;
+  font-weight: 400;
+}
+.invoice-bar {
+  height: 18px;
+  border-radius: 8px;
+  margin: 6px 0 10px 0;
+  background: #e0e0e0;
+  width: 100%;
+}
+.invoice-bar-pagado {
+  background: #16a34a;
+}
+.invoice-bar-nuevo {
+  background: #888;
+}
+
+/* Boleta/Libre dashboard styles */
+.dashboard-bolsa-details {
+  margin-bottom: 8px;
+}
+.bolsa-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+.bolsa-amount {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+.bolsa-label {
+  font-size: 0.98rem;
+  color: #888;
+  font-weight: 400;
+}
+.bolsa-bar {
+  height: 18px;
+  border-radius: 8px;
+  margin: 6px 0 10px 0;
+  background: #e0e0e0;
+  width: 100%;
+}
+.bolsa-bar-boleta {
+  background: #1976d2;
+}
+.bolsa-bar-libre {
+  background: #888;
+}
+
+/* Gastos dashboard styles */
+.dashboard-expenses-sub {
+  font-size: 0.98rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+.dashboard-expense-details {
+  margin-bottom: 8px;
+}
+.dashboard-expense-label {
+  font-size: 0.98rem;
+  color: #888;
+  font-weight: 400;
+}
+.dashboard-expenses-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.dashboard-expenses-chart canvas {
+  max-width: 120px;
+  max-height: 120px;
+}
+.dashboard-link {
+  color: #1976d2;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  margin-top: 6px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+}
+
+/* Responsive para dashboard grid y filas */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 8px;
+  }
+  .dashboard-row.dashboard-grid-secondary {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 12px 8px;
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-row {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+    padding: 0 8px;
+  }
+  .dashboard-row.dashboard-grid-secondary {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 8px 4px;
+  }
+  .dashboard-projects {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 8px;
+  }
+  .dashboard-projects-legend {
+    flex-direction: row;
+    gap: 12px;
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+  .dashboard-projects-axis {
+    flex-direction: row;
+    margin-left: 0;
+    margin-top: 8px;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-welcome-card,
+  .dashboard-card,
+  .dashboard-card-tres {
+    padding: 12px 6px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+  .dashboard-section-title {
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+  }
+  .dashboard-actions-row {
+    padding: 6px 0 4px 0;
+    gap: 6px;
+  }
+  .dashboard-actions {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 4px;
+    background: #f5f7fa;
+  }
+  .action-btn-group {
+    margin: 0 6px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    padding: 8px 4px 4px 4px;
+  }
+  .action-circle {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 4px;
+  }
+  .action-circle i.fas.fa-shopping-cart {
+    font-size: 1.2rem;
+  }
+  .action-label {
+    font-size: 0.92rem;
+    margin-top: 6px;
+  }
+  .dashboard-title-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.95rem;
+    margin-right: 6px;
+  }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 576px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 0 2px;
+  }
+  .dashboard-welcome h2 {
+    font-size: 0.95rem;
+  }
+  .dashboard-section-title {
+    font-size: 0.95rem;
+  }
+  .dashboard-actions {
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 2px;
+  }
+  .dashboard-card h3 {
+    font-size: 1rem;
+  }
+  .dashboard-card-sub,
+  .dashboard-bar-label,
+  .dashboard-expense-label,
+  .dashboard-invoice-label,
+  .dashboard-bolsa-label,
+  .gains-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .dashboard-projects,
+  .dashboard-gains {
+    grid-column: auto;
+  }
+}

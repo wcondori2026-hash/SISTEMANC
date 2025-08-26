@@ -1,0 +1,41 @@
+<div class="modal-content p-3">
+  <div class="card shadow-sm mb-3">
+    <div class="card-header fw-bold">Cargar documento anexos</div>
+    <div class="card-body">
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <input type="file" #fileInput class="d-none" (change)="importarArchivo($event)" />
+        <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" (click)="fileInput.click()">
+          <i class="fa fa-upload"></i> Seleccionar archivo
+        </button>
+        <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" (click)="cerrar()">
+          <i class="fa fa-ban"></i> Cerrar
+        </button>
+        <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" (click)="cerrar()">
+          <i class="fa fa-arrow-right"></i> Salir
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead class="table-light">
+            <tr>
+              <th>Nro</th>
+              <th>Descripción</th>
+              <th>Tamaño</th>
+              <th>Tipo Archivo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of anexos; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{a.descripcion}}</td>
+              <td>{{a.tamano}}</td>
+              <td>{{a.tipo}}</td>
+              <td class="text-center"><button class="btn btn-outline-danger btn-xs d-flex align-items-center gap-1"><i class="fa fa-times"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

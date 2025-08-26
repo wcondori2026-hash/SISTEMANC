@@ -1,0 +1,170 @@
+<div class="dashboard-wrapper d-flex flex-column flex-md-row">
+  <app-menu [menuActivo]="menuActivo" (cerrar)="cerrarMenu()"></app-menu>
+  <div class="dashboard-main flex-grow-1">
+    <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
+    <section class="dashboard-content main__form mt-3">
+      <div class="container-fluid px-2 px-md-5">
+        <div class="row">
+          <div class="col-12">
+            <div class="compras-toolbar mb-3 d-flex flex-column flex-md-row gap-2 border-0 p-0" style="box-shadow:none;">
+              <div class="d-flex flex-column flex-md-row w-100 gap-2">
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="irARegistro()"><i class="fa fa-file me-2"></i> Nuevo</button>
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="fa fa-edit me-2"></i> Editar</button>
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="fa fa-times-circle me-2"></i> Anular</button>
+                <div class="btn-group mb-2 mb-md-0 w-md-auto">
+                  <button type="button" class="btn btn-primary compras-btn fw-bold d-flex align-items-center dropdown-toggle w-100 w-md-auto" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-cogs me-2"></i> Exportar Excel
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Exportar todo</a></li>
+                    <li><a class="dropdown-item" href="#">Exportar página</a></li>
+                  </ul>
+                </div>
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center w-md-auto"><i class="fa fa-arrow-right me-2"></i> Salir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card compras-filtros-card mb-4">
+              <div class="card-header fw-bold">Filtro</div>
+              <form class="card-body compras-filtros p-2 p-md-3" autocomplete="off" (ngSubmit)="filtrar()">
+                <div class="row g-2 g-md-3">
+                  <div class="col-12 col-md-9">
+                    <div class="row g-2 g-md-3">
+                      <div class="col-12 col-md-3">
+                        <label for="codigoCotizacion" class="form-label">Código de Cotización:</label>
+                        <input type="text" class="form-control" id="codigoCotizacion" [(ngModel)]="filtroCodigo" name="codigoCotizacion" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="proyecto" class="form-label">Proyecto / Obra:</label>
+                        <input type="text" class="form-control" id="proyecto" [(ngModel)]="filtroProyecto" name="proyecto" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="concepto" class="form-label">Concepto:</label>
+                        <input type="text" class="form-control" id="concepto" [(ngModel)]="filtroConcepto" name="concepto" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="fechaEmision" class="form-label">Fecha Emisión:</label>
+                        <input type="date" class="form-control" id="fechaEmision" [(ngModel)]="filtroFecha" name="fecha" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="categoria" class="form-label">Categoría:</label>
+                        <input type="text" class="form-control" id="categoria" [(ngModel)]="filtroCategoria" name="categoria" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="razonSocial" class="form-label">Razón social:</label>
+                        <input type="text" class="form-control" id="razonSocial" [(ngModel)]="filtroRazonSocial" name="razonSocial" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="cliente" class="form-label">Cliente:</label>
+                        <input type="text" class="form-control" id="cliente" [(ngModel)]="filtroCliente" name="cliente" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="documento" class="form-label">Documento:</label>
+                        <input type="text" class="form-control" id="documento" [(ngModel)]="filtroDocumento" name="documento" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label for="etapa" class="form-label">Etapa:</label>
+                        <select class="form-select" id="etapa" [(ngModel)]="filtroEtapa" name="etapa">
+                          <option value="">Todos</option>
+                          <option value="Nuevo">Nuevo</option>
+                          <option value="Aceptado">Aceptado</option>
+                          <option value="Anulado">Anulado</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 d-flex align-items-center">
+                    <div class="d-flex justify-content-center w-100">
+                      <button type="submit" class="btn btn-primary w-100 w-md-auto" style="height: 48px; min-width: 140px; font-size: 1.1rem;">
+                        <i class="fa fa-search me-2"></i> Buscar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card compras-resultado-card mb-4 mt-4">
+              <div class="card-header fw-bold">Resultado</div>
+              <div class="card-body p-2 p-md-3">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped align-middle compras-table-padding">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Nro</th>
+                        <th>Razón social</th>
+                        <th>Concepto</th>
+                        <th>Categoría</th>
+                        <th>Proyecto/Obra</th>
+                        <th>Cliente</th>
+                        <th>Documento</th>
+                        <th>Fecha Emisión</th>
+                        <th>Etapa</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of comprasPaginadas">
+                        <td>{{item.num}}</td>
+                        <td>{{item.razonSocial}}</td>
+                        <td>{{item.concepto}}</td>
+                        <td>{{item.categoria}}</td>
+                        <td>{{item.proyecto}}</td>
+                        <td>{{item.cliente}}</td>
+                        <td>{{item.documento}}</td>
+                        <td>{{item.fecha}}</td>
+                        <td>
+                          <span class="badge px-3 py-2" [ngClass]="{
+                            'bg-success': item.estado === 'Aceptado',
+                            'bg-danger': item.estado === 'Anulado',
+                            'bg-secondary': item.estado === 'Nuevo'
+                          }">{{item.estado}}</span>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column flex-md-row gap-1">
+                            <button class="btn btn-sm btn-outline-primary mb-1 mb-md-0 me-0 me-md-1" title="Editar"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-sm btn-outline-danger mb-1 mb-md-0 me-0 me-md-1" title="Eliminar"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-sm btn-outline-secondary mb-1 mb-md-0" title="Ver"><i class="fa fa-eye"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-2 gap-2">
+                  <div class="w-100 w-md-auto">
+                    <label for="cantidadFilas" class="form-label me-2">Cantidad de filas</label>
+                    <select id="cantidadFilas" class="form-select d-inline-block w-100 w-md-auto" (change)="cambiarPageSize($any($event.target).value)">
+                      <option [selected]="pageSize==10">10</option>
+                      <option [selected]="pageSize==20">20</option>
+                      <option [selected]="pageSize==50">50</option>
+                    </select>
+                  </div>
+                  <nav aria-label="Paginación de resultados" class="w-100 w-md-auto">
+                    <ul class="pagination mb-0 justify-content-center justify-content-md-end flex-wrap">
+                      <li class="page-item" [class.disabled]="page === 1">
+                        <a class="page-link" href="#" (click)="$event.preventDefault(); setPage(page - 1)">&lt;</a>
+                      </li>
+                      <li class="page-item" *ngFor="let p of getPages(); let i = index" [class.active]="page === i+1">
+                        <a class="page-link" href="#" (click)="$event.preventDefault(); setPage(i+1)">{{i+1}}</a>
+                      </li>
+                      <li class="page-item" [class.disabled]="page === getPages().length">
+                        <a class="page-link" href="#" (click)="$event.preventDefault(); setPage(page + 1)">&gt;</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

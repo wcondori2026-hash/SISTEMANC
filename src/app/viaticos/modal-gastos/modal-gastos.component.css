@@ -1,0 +1,13 @@
+.modal-content {
+  border-radius: 8px;
+}
+.table th, .table td {
+  font-size: 0.95rem;
+}
+.btn {
+  min-width: 160px;
+}
+input[readonly] {
+  background: #fff;
+  border: 1px solid #ccc;
+}

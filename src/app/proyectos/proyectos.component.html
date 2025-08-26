@@ -1,0 +1,225 @@
+
+<div class="dashboard-wrapper d-flex flex-column flex-md-row">
+  <app-menu [menuActivo]="menuActivo" (cerrar)="cerrarMenu()"></app-menu>
+  <div class="dashboard-main flex-grow-1">
+    <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
+    <section class="dashboard-content main__form mt-3">
+      <div class="container-fluid px-2 px-md-5">
+        <!-- Toolbar y Filtros fuera de los tabs -->
+        <div class="row">
+          <div class="col-12">
+            <div class="compras-toolbar mb-3 d-flex flex-column flex-md-row gap-2 border-0 p-0" style="box-shadow:none;">
+              <div class="d-flex flex-column flex-md-row w-100 gap-2">
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="irANuevoProyecto()"><i class="fa fa-file me-2"></i> Nuevo</button>
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="fa fa-edit me-2"></i> Editar</button>
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="fa fa-times-circle me-2"></i> Anular</button>
+                <div class="btn-group mb-2 mb-md-0 w-md-auto">
+                  <button type="button" class="btn btn-primary compras-btn fw-bold d-flex align-items-center dropdown-toggle w-100 w-md-auto" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-cogs me-2"></i> Exportar Excel
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Exportar todo</a></li>
+                    <li><a class="dropdown-item" href="#">Exportar página</a></li>
+                  </ul>
+                </div>
+                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center w-md-auto"><i class="fa fa-arrow-right me-2"></i> Salir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-3 shadow-sm">
+              <div class="card-header fw-bold">Filtro</div>
+              <div class="card-body p-3">
+                <form class="row g-2 g-md-3 align-items-end compras-filtros" (ngSubmit)="filtrar()">
+                  <div class="row g-2 g-md-3">
+                    <div class="col-12 col-md-9">
+                      <div class="row g-2 g-md-3">
+                        <div class="col-12 col-md-3">
+                          <label class="form-label">Código de Cotización:</label>
+                          <input type="text" class="form-control" [(ngModel)]="filtroCodigo" name="codigo" />
+                        </div>
+                        <div class="col-12 col-md-3">
+                          <label class="form-label">Proyecto / Obra:</label>
+                          <input type="text" class="form-control" [(ngModel)]="filtroNombre" name="nombre" />
+                        </div>
+                        <div class="col-12 col-md-3">
+                          <label class="form-label">Fecha Inicio :</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="dd/mm/aaaa" [(ngModel)]="filtroFechaInicio" name="fechaInicio" />
+                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                          <label class="form-label">Fecha Finaliz :</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="dd/mm/aaaa" [(ngModel)]="filtroFechaFin" name="fechaFin" />
+                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                          <label class="form-label">Responsable :</label>
+                          <select class="form-select" [(ngModel)]="filtroResponsable" name="responsable">
+                            <option value="">Seleccione</option>
+                            <!-- Puedes agregar opciones dinámicas aquí si lo deseas -->
+                          </select>
+                        </div>
+                        <div class="col-12 col-md-3">
+                          <label class="form-label">Etapa :</label>
+                          <select class="form-select" [(ngModel)]="filtroEstado" name="estado">
+                            <option value="">Todos</option>
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Finalizado">Finalizado</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Anulado">Anulado</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex align-items-center">
+                      <button class="btn btn-primary w-100 w-md-auto" type="submit">
+                        <i class="fa fa-search me-2"></i> Buscar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- Tabs solo para el card de listado/calendario -->
+            <div class="card shadow-sm mb-4">
+              <div class="card-header bg-light fw-bold">
+                <ul class="nav nav-tabs" id="proyectosTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="lista-tab" data-bs-toggle="tab" data-bs-target="#lista" type="button" role="tab" aria-controls="lista" aria-selected="true">Lista</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="calendario-tab" data-bs-toggle="tab" data-bs-target="#calendario" type="button" role="tab" aria-controls="calendario" aria-selected="false">Calendario</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body p-2 p-md-3">
+                <div class="tab-content" id="proyectosTabsContent">
+                  <div class="tab-pane fade show active" id="lista" role="tabpanel" aria-labelledby="lista-tab">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Nro</th>
+                            <th>Código Cotización</th>
+                            <th>Proyecto / Obra</th>
+                            <th>Cliente</th>
+                            <th>Documento</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let proyecto of proyectosPaginados">
+                            <td>{{proyecto.id}}</td>
+                            <td>{{proyecto.codigo}}</td>
+                            <td>{{proyecto.nombre}}</td>
+                            <td>{{proyecto.cliente}}</td>
+                            <td>{{proyecto.documento}}</td>
+                            <td>{{proyecto.fechaInicio}}</td>
+                            <td>{{proyecto.fechaFin}}</td>
+                            <td>
+                              <span class="badge"
+                                [ngClass]="{
+                                  'bg-success': proyecto.estado === 'Finalizado',
+                                  'bg-warning': proyecto.estado === 'En proceso',
+                                  'bg-secondary': proyecto.estado === 'Pendiente'
+                                }"
+                              >{{proyecto.estado}}</span>
+                            </td>
+                            <td>
+                              <div class="d-flex flex-column flex-md-row gap-1">
+                                <button class="btn btn-sm btn-outline-primary mb-1 mb-md-0 me-0 me-md-1" title="Editar"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-sm btn-outline-danger mb-1 mb-md-0 me-0 me-md-1" title="Eliminar"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-sm btn-outline-secondary mb-1 mb-md-0" title="Ver"><i class="fa fa-eye"></i></button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-2 gap-2">
+                      <div class="w-100 w-md-auto order-2 order-md-1">
+                        <label class="form-label me-2">Cantidad de filas</label>
+                        <select class="form-select d-inline-block w-100 w-md-auto" (change)="cambiarPageSize($any($event.target).value)">
+                          <option [selected]="pageSize==10">10</option>
+                          <option [selected]="pageSize==20">20</option>
+                          <option [selected]="pageSize==50">50</option>
+                        </select>
+                      </div>
+                      <nav aria-label="Paginación de resultados" class="w-100 w-md-auto order-1 order-md-2">
+                        <ul class="pagination mb-0 justify-content-center justify-content-md-end flex-wrap">
+                          <li class="page-item" [class.disabled]="page === 1">
+                            <a class="page-link" href="#" (click)="$event.preventDefault(); setPage(page - 1)">&lt;</a>
+                          </li>
+                          <li class="page-item" *ngFor="let p of getPages(); let i = index" [class.active]="page === i+1">
+                            <a class="page-link" href="#" (click)="$event.preventDefault(); setPage(i+1)">{{i+1}}</a>
+                          </li>
+                          <li class="page-item" [class.disabled]="page === getPages().length">
+                            <a class="page-link" href="#" (click)="$event.preventDefault(); setPage(page + 1)">&gt;</a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="calendario" role="tabpanel" aria-labelledby="calendario-tab">
+                    <div *ngIf="calendarMatrix && calendarMatrix.length > 0; else noCalendario">
+                      <div class="table-responsive">
+                        <table class="table table-bordered text-center align-middle" style="min-width:700px;">
+                          <thead>
+                            <tr>
+                              <th>Lun</th>
+                              <th>Mar</th>
+                              <th>Mie</th>
+                              <th>Jue</th>
+                              <th>Vie</th>
+                              <th>Sab</th>
+                              <th>Dom</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let semana of calendarMatrix">
+                              <td *ngFor="let dia of semana">
+                                <span *ngIf="dia.day > 0">{{dia.day}}</span>
+                                <div *ngFor="let proyecto of dia.proyectos" class="mt-1">
+                                  <span class="badge"
+                                    [ngClass]="{
+                                      'bg-success': proyecto.estado === 'Finalizado',
+                                      'bg-warning': proyecto.estado === 'En proceso',
+                                      'bg-info': proyecto.estado === 'Programado',
+                                      'bg-danger': proyecto.estado === 'Nuevo',
+                                      'bg-secondary': proyecto.estado === 'Pendiente',
+                                      'bg-dark': proyecto.estado === 'Anulado'
+                                    }"
+                                  >{{proyecto.estado}}</span>
+                                  <br>
+                                  <span class="fw-bold">{{proyecto.nombre}}</span><br>
+                                  <span class="text-primary">{{proyecto.cliente}}</span>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <ng-template #noCalendario>
+                      <div class="alert alert-info mt-3">No hay datos para mostrar en el calendario.</div>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

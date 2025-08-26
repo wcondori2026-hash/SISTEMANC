@@ -1,0 +1,116 @@
+<div class="dashboard-wrapper d-flex">
+  <app-menu [menuActivo]="menuActivo" (cerrar)="cerrarMenu()"></app-menu>
+  <div class="dashboard-main flex-grow-1">
+    <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
+    <section class="dashboard-content mt-3">
+      <div class="container-fluid px-3">
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body p-3 d-flex flex-wrap gap-2 align-items-center">
+          <button class="btn btn-primary text-white fw-bold"><i class="fa-solid fa-save me-2"></i> Grabar</button>
+          <button class="btn btn-primary text-white fw-bold" (click)="abrirModalAnexos()"><i class="fa-solid fa-upload me-2"></i> Cargar Anexos</button>
+          <button class="btn btn-primary text-white fw-bold"><i class="fa-solid fa-times me-2"></i> Cerrar</button>
+          <button class="btn btn-primary text-white fw-bold"><i class="fa-solid fa-sign-out-alt me-2"></i> Salir</button>
+          <div class="ms-auto d-flex gap-2">
+            <select class="form-select w-auto">
+              <option>Seleccione</option>
+            </select>
+            <select class="form-select w-auto">
+              <option>Seleccione</option>
+            </select>
+            <select class="form-select w-auto bg-danger text-white fw-bold">
+              <option>Nuevo</option>
+              <option>Aceptado</option>
+              <option>Anulado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+  <form class="row g-3">
+        <div class="col-12 col-lg-12">
+          <div class="card mb-3">
+            <div class="card-header bg-primary text-white">Datos Generales</div>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-3">
+                  <label class="form-label">Categoría:</label>
+                  <select class="form-select"><option>Gastos fijos</option></select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Sub categoría:</label>
+                  <select class="form-select"><option>Planta</option></select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Código cotización:</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Proyecto / Obras:</label>
+                  <select class="form-select"><option>Seleccione</option></select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Responsable:</label>
+                  <select class="form-select"><option>Seleccione</option></select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <button class="btn btn-secondary w-100">Asignar valor</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-12">
+          <div class="card mb-3">
+            <div class="card-header bg-primary text-white">Datos del proveedor</div>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-3">
+                  <label class="form-label">Tipo de documento:</label>
+                  <select class="form-select"><option>RUC/DNI/Otros</option></select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Número de documento:</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Número:</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card mb-3">
+            <div class="card-header bg-primary text-white">Otros Datos</div>
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label">Tipo de comprobante:</label>
+                  <select class="form-select"><option>RUC/DNI/Otros</option></select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Tipo de cambio:</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Fecha de cambio:</label>
+                  <input type="date" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Glosa de comprobante:</label>
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Glosa de movimientos:</label>
+                  <textarea class="form-control" rows="2"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

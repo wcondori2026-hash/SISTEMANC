@@ -1,0 +1,8 @@
+/* Estilos básicos para el modal, puedes personalizar según tu tema */
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+.input-group-text {
+  background: #fff;
+}

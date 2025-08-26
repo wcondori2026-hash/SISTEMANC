@@ -1,0 +1,43 @@
+<div class="login-bg d-flex justify-content-center align-items-center" style="min-height:100vh;">
+  <img src="/assets/images/bg-login-desktop.jpg" alt="background" class="bg-img" />
+  <div class="login-panel d-flex flex-row align-items-stretch justify-content-center" style="background:rgba(23,58,120,0.85); min-width:700px; max-width:700px; min-height:340px; box-shadow:0 4px 32px rgba(0,0,0,0.18); z-index:2; position:relative;">
+    <div class="login-left d-flex flex-column justify-content-center align-items-start p-4" style="flex:1; color:#fff;">
+      <img src="/assets/images/logo-nc-quality.png" alt="NC Quality" class="login-logo mb-4" style="width:140px;" />
+      <div class="login-title-row d-flex align-items-center mb-3">
+        <i class="fas fa-file-alt login-title-icon me-3" style="font-size:2.2rem; color:#fff;"></i>
+        <div class="login-title-text d-flex flex-column">
+          <span style="font-weight:normal; font-size:1.3rem;">Sistema de</span>
+          <span style="font-weight:900; font-size:2.2rem;"> administración</span>
+          <span style="font-weight:900; font-size:2.2rem;"> digital</span>
+        </div>
+      </div>
+    </div>
+    <div class="login-right d-flex flex-column justify-content-center align-items-center p-4" style="flex:1; position:relative;">
+      <form class="login-form w-100" (submit)="onLogin($event)" autocomplete="off">
+        <div class="mb-3">
+          <label for="usuario" class="form-label text-white">Usuario</label>
+          <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario" required class="form-control bg-transparent text-white border-0 border-bottom rounded-3 px-3" />
+        </div>
+        <div class="mb-3">
+          <label for="contrasenia" class="form-label text-white">Contraseña</label>
+          <input type="password" id="contrasenia" name="contrasenia" [(ngModel)]="contrasenia" required class="form-control bg-transparent text-white border-0 border-bottom rounded-3 px-3" />
+        </div>
+        <div class="mb-4">
+          <label for="empresa" class="form-label text-white">Empresa</label>
+          <input type="text" id="empresa" name="empresa" [(ngModel)]="empresa" required class="form-control bg-transparent text-white border-0 border-bottom rounded-3 px-3" />
+        </div>
+        <button type="submit" class="btn btn-dark w-100 fw-bold py-2">Login</button>
+        <div *ngIf="error" class="login-error text-center mt-3">{{error}}</div>
+      </form>
+      <!-- Iconos sociales al costado derecho del panel -->
+      <div class="login-social-panel d-flex flex-column align-items-center gap-3">
+        <a href="#" class="social-icon text-white fs-3"><i class="fa-brands fa-facebook-square"></i></a>
+        <a href="#" class="social-icon text-white fs-3"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon text-white fs-3"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-footer text-center text-white position-fixed w-100" style="bottom:1.2rem; opacity:0.8; z-index:20;">
+    constructorancquality.com.pe
+  </div>

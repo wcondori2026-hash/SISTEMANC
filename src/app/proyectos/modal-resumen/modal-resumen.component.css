@@ -1,0 +1,22 @@
+.container-fluid {
+  min-width: 320px;
+  max-width: 100vw;
+}
+.card {
+  min-height: 220px;
+}
+.bg-warning-subtle {
+  background-color: #fff3cd !important;
+}
+.bg-success-subtle {
+  background-color: #d1e7dd !important;
+}
+.bg-danger-subtle {
+  background-color: #f8d7da !important;
+}
+@media (max-width: 768px) {
+  .card {
+    min-height: 180px;
+    font-size: 0.95rem;
+  }
+}

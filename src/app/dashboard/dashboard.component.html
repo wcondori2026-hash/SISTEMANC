@@ -1,0 +1,160 @@
+<div class="dashboard-wrapper d-flex">
+  <app-menu [menuActivo]="menuActivo" (cerrar)="cerrarMenu()"></app-menu>
+  <div class="dashboard-main flex-grow-1">
+    <app-breadcrumb
+      [menuActivo]="menuActivo"
+      (mostrarMenu)="mostrarMenu()"
+    ></app-breadcrumb>
+    <section class="dashboard-content">
+      <div class="dashboard-card">
+        <div class="dashboard-actions-row">
+          <div class="dashboard-actions-header">Acciones Rápidas</div>
+          <div class="dashboard-actions">
+            <div class="action-btn-group">
+              <div class="action-circle">
+                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-plus action-plus"></i>
+              </div>
+              <div class="action-label">Compras/Gastos</div>
+            </div>
+            <div class="action-btn-group">
+              <div class="action-circle">
+                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-plus action-plus"></i>
+              </div>
+              <div class="action-label">Ventas</div>
+            </div>
+            <div class="action-btn-group">
+              <div class="action-circle">
+                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-plus action-plus"></i>
+              </div>
+              <div class="action-label">Validos</div>
+            </div>
+            <div class="action-btn-group">
+              <div class="action-circle">
+                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-plus action-plus"></i>
+              </div>
+              <div class="action-label">Proyectos/Obra</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="dashboard-card dashboard-projects">
+          <h3>EJECUCIÓN DE PROYECTOS / OBRAS</h3>
+          <div class="dashboard-projects-horizontal">
+            <div class="dashboard-projects-legend">
+              <span class="legend-item"><span class="legend-color legend-costo"></span> Costo</span>
+              <span class="legend-item"><span class="legend-color legend-gasto"></span> Gasto</span>
+            </div>
+            <div class="dashboard-projects-bars">
+              <ng-container *ngIf="projectData && projectData.labels && projectData.labels.length">
+                <canvas baseChart
+                  [data]="projectData"
+                  [type]="barType"
+                  [options]="barOptions"
+                  style="max-width: 100%; height: 220px;">
+                </canvas>
+              </ng-container>
+              <ng-container *ngIf="!projectData || !projectData.labels || !projectData.labels.length">
+                <div class="text-center text-muted py-4">No hay datos para mostrar el gráfico</div>
+              </ng-container>
+            </div>
+            <div class="dashboard-projects-axis">
+              <span>1,000</span>
+              <span>5,000</span>
+              <span>15,000</span>
+              <span>150,000</span>
+              <span>Soles</span>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-card ganacias-perdidas dashboard-gains">
+          <h3>GANANCIAS Y PÉRDIDAS <span class="dashboard-card-sub">Últimos 30 días</span></h3>
+          <div class="dashboard-gains-sub">Beneficio neto de últimos 30 días</div>
+          <div class="dashboard-value">S/. 8,545.00</div>
+          <div class="dashboard-gains-bars">
+            <div class="gains-row">
+              <span class="gains-label">S/. 18,545.0</span>
+              <div class="gains-bar gains-bar-ingresos" style="width: 80%"></div>
+              <span class="gains-label">Ingresos</span>
+            </div>
+            <div class="gains-row">
+              <span class="gains-label">S/. 10,000.0</span>
+              <div class="gains-bar gains-bar-egresos" style="width: 60%"></div>
+              <span class="gains-label">Egresos</span>
+            </div>
+          </div>
+          <a class="dashboard-link" href="#">Ver informe de pérdidas y ganancias</a>
+        </div>
+      </div>
+      <div class="dashboard-row dashboard-grid-secondary">
+        <div class="dashboard-card-tres ganacias-perdidas dashboard-expenses">
+          <h3>GASTOS <span class="dashboard-card-sub">Últimos 30 días</span></h3>
+          <div class="dashboard-expenses-sub">Gastos de últimos 30 días</div>
+          <div class="dashboard-value">S/. 10,000.00</div>
+          <div class="dashboard-expense-details">
+            <div>S/. 4,500.00 <span class="dashboard-expense-label">Deudas</span></div>
+            <div>S/. 5,500.00 <span class="dashboard-expense-label">Gastos</span></div>
+          </div>
+          <div class="dashboard-expenses-chart">
+            <ng-container>
+              <canvas baseChart
+                [data]="doughnutData"
+                [type]="doughnutType"
+                [options]="doughnutOptions">
+              </canvas>
+            </ng-container>
+          </div>
+          <a class="dashboard-link" href="#">Ver informe de gastos</a>
+        </div>
+        <div class="dashboard-card-tres ganacias-perdidas dashboard-invoices">
+          <h3>FACTURAS <span class="dashboard-card-sub">Últimos 30 días</span></h3>
+          <div class="dashboard-value">S/. 8,545.00 TOTAL</div>
+          <div class="dashboard-invoice-details">
+            <div class="invoice-row">
+              <div class="invoice-col">
+                <span class="invoice-amount">S/. 18,545.0</span>
+                <span class="invoice-label">No Pagado</span>
+              </div>
+              <div class="invoice-col">
+                <span class="invoice-amount">S/. 18,545.0</span>
+                <span class="invoice-label">Pagado</span>
+              </div>
+            </div>
+            <div class="invoice-bar invoice-bar-pagado"></div>
+            <div class="invoice-row">
+              <div class="invoice-col">
+                <span class="invoice-amount">S/. 18,545.0</span>
+                <span class="invoice-label">Nuevo</span>
+              </div>
+              <div class="invoice-col">
+                <span class="invoice-amount">S/. 18,545.0</span>
+                <span class="invoice-label">Enviado Client</span>
+              </div>
+            </div>
+            <div class="invoice-bar invoice-bar-nuevo"></div>
+          </div>
+        </div>
+        <div class="dashboard-card-tres ganacias-perdidas dashboard-bolsa">
+          <h3>BOLETA/LIBRE <span class="dashboard-card-sub">Últimos 30 días</span></h3>
+          <div class="dashboard-value">S/. 8,545.00 TOTAL</div>
+          <div class="dashboard-bolsa-details">
+            <div class="bolsa-row">
+              <span class="bolsa-amount">S/. 18,545.0</span>
+              <span class="bolsa-label">BOLETA</span>
+            </div>
+            <div class="bolsa-bar bolsa-bar-boleta"></div>
+            <div class="bolsa-row">
+              <span class="bolsa-amount">S/. 10,000.0</span>
+              <span class="bolsa-label">LIBRE</span>
+            </div>
+            <div class="bolsa-bar bolsa-bar-libre"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

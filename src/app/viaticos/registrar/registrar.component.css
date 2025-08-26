@@ -1,0 +1,5 @@
+fieldset { border: 1px solid #dee2e6; margin-bottom: 1rem; }
+legend { font-size: 1rem; font-weight: 600; }
+.table th, .table td { vertical-align: middle; }
+select.bg-danger { background-color: #dc3545 !important; }
+select.text-white { color: #fff !important; }

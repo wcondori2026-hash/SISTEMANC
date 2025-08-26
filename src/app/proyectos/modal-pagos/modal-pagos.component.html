@@ -1,0 +1,57 @@
+<div mat-dialog-content>
+  <div class="container-fluid">
+    <div class="card shadow-sm mb-3 mt-2">
+      <div class="card-header fw-bold d-flex justify-content-between align-items-center">
+        Lista de pagos
+      </div>
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-4 col-md-1" style="margin-right: 1%;">
+            <button class="btn btn-primary me-2 d-flex align-items-center gap-2" (click)="cerrar()">
+              <i class="fa fa-ban"></i> Cerrar
+            </button>
+          </div>
+          <div class="col-4 col-md-1">
+            <button class="btn btn-primary d-flex align-items-center gap-2" (click)="cerrar()">
+              <i class="fa fa-arrow-right"></i> Salir
+            </button>
+          </div>
+        </div>
+        <div class="row g-2">
+          <div class="col-md-12">
+            <div class="table-responsive mb-3">
+              <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>Nro</th>
+                    <th>Tipo documento</th>
+                    <th>Concepto</th>
+                    <th>Monto</th>
+                    <th>IGV</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pago of pagos">
+                    <td>{{pago.nro}}</td>
+                    <td>{{pago.tipo}}</td>
+                    <td>{{pago.concepto}}</td>
+                    <td>{{pago.monto | number:'1.2-2'}}</td>
+                    <td>{{pago.igv | number:'1.2-2'}}</td>
+                    <td>{{pago.total | number:'1.2-2'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="d-flex justify-content-end align-items-center">
+              <span class="fw-bold me-2">Total :</span>
+              <input class="form-control w-auto text-end" [value]="getTotal() | number:'1.2-2'" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

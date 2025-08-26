@@ -1,0 +1,60 @@
+<!-- Contenido para MatDialog, con clases Bootstrap para mejor visual -->
+<div class="modal-content p-3 shadow-lg rounded-4">
+  <div class="modal-header border-bottom-0 pb-0">
+    <h5 class="modal-title">Cargar documento anexos</h5>
+    <button type="button" class="btn-close" aria-label="Cerrar" (click)="cerrarDialog()"></button>
+  </div>
+  <div class="modal-body pt-2">
+    <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+      <label class="btn btn-primary mb-0 w-md-auto">
+        <i class="fa fa-upload me-2"></i> Seleccionar archivo
+        <input type="file" multiple hidden (change)="onFileChange($event)" />
+      </label>
+      <button class="btn btn-primary w-md-auto" (click)="cerrarDialog()"><i class="fa fa-times me-2"></i> Cerrar</button>
+      <button class="btn btn-primary w-md-auto"><i class="fa fa-arrow-right me-2"></i> Salir</button>
+    </div>
+    <div *ngIf="mensaje" class="alert mb-3" [ngClass]="{
+      'alert-success': mensajeTipo === 'success',
+      'alert-danger': mensajeTipo === 'danger',
+      'alert-info': mensajeTipo === 'info'
+    }" role="alert">
+      {{mensaje}}
+    </div>
+    <button class="btn btn-success mb-3 d-flex align-items-center gap-2" (click)="enviarArchivos()" [disabled]="archivos.length === 0 || cargando">
+      <i class="fa fa-paper-plane"></i>
+      <span>Enviar archivos</span>
+      <span *ngIf="cargando" class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>
+    </button>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Nro</th>
+            <th>Descripción</th>
+            <th>Tamaño</th>
+            <th>Tipo Archivo</th>
+            <th>Previsualizar</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let archivo of archivos; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{archivo.nombre}}</td>
+            <td>{{archivo.tamano}}</td>
+            <td>{{archivo.tipo}}</td>
+            <td>
+              <img *ngIf="archivo.preview" [src]="archivo.preview" alt="preview" style="max-width:60px;max-height:60px;border-radius:4px;" />
+            </td>
+            <td>
+              <button class="btn btn-sm btn-outline-danger" (click)="eliminarArchivo(i)"><i class="fa fa-times"></i></button>
+            </td>
+          </tr>
+          <tr *ngIf="archivos.length === 0">
+            <td colspan="6" class="text-center">No hay archivos cargados</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

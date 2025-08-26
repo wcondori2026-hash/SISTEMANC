@@ -1,0 +1,178 @@
+/* -- UTILITIES -- */
+.bg-quality {
+  background-color: var(--second-color);
+  color: var(--white-color);
+}
+
+/* -- BUTTONS -- */
+.bton {
+  background: transparent;
+  border: 0;
+  border-radius: 0.2rem;
+  padding: 0.7rem 1rem;
+  width: 100%;
+  font-size: 0.95rem;
+  transition: all 0.5s;
+}
+
+.bton-darker {
+  background: #1a222f;
+  color: var(--white-color);
+  font-family: var(--font-bold);
+}
+
+.bton-darker:hover,
+.bton-darker:active {
+  background-color: #161c26;
+  color: var(--white-color);
+}
+
+.bton-action {
+  background: var(--second-color);
+  border: 0;
+  color: var(--white-color);
+  font-size: 0.9rem;
+  outline: 0;
+  padding: 0.6rem 0.7rem;
+  min-width: 99px;
+  transform: skew(-6deg);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.bton-action:hover,
+.activo {
+  background: var(--third-color);
+  color: var(--white-color);
+  font-weight: bold;
+}
+
+.boton {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-family: var(--font-book);
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  min-width: 99px;
+  transform: skew(-6deg);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.boton > span,
+.bton-action > span {
+  display: inline-block;
+  transform: skew(6deg);
+}
+
+.boton-primary,
+.boton-secondary {
+  color: var(--white-color);
+}
+
+.boton-primary {
+  background: var(--second-color);
+}
+
+.boton-secondary {
+  background: var(--six-color);
+}
+
+/* -- HOVER EFFECTS -- */
+
+/* Grow Effect */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE DESIGN ====== */
+
+@media (min-width: 768px) {
+  .bton-action {
+    font-size: 0.9rem;
+    padding: 0.6rem 2.25rem;
+    transform: skew(-6deg);
+    width: unset;
+  }
+}
+
+@media (min-width: 992px) {
+  .bton {
+    padding: 0.6rem 3rem;
+    width: auto;
+  }
+
+  .bton-action {
+    font-size: 0.95rem;
+    padding: 0.6rem 2.2rem;
+    min-width: 160px;
+  }
+}
+
+/* -- View X-Large (Desktop) -- */
+@media (min-width: 1200px) {
+  .bton {
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    width: 100%;
+  }
+
+  .bton-action {
+    font-size: 0.92rem;
+    min-width: 150px;
+    padding: 0.6rem 2.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bton-action {
+    min-width: 190px;
+    padding: 0.6rem 3.8rem;
+  }
+}
+
+/* ==== Menú Scroll Horizontal ==== */
+@media (max-width: 575px) {
+  .scroll-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .scroll-menu {
+    width: 540px;
+    background: #fff;
+    padding: 0.6rem 0.2rem;
+  }
+
+  .botones ::-webkit-scrollbar {
+    width: 15px;
+    height: 6px;
+  }
+
+  .botones ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #e5e5e5;
+  }
+
+  .botones ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ccc;
+  }
+}

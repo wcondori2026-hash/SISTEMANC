@@ -1,0 +1,53 @@
+/* Estilos personalizados y Bootstrap para responsive */
+.dashboard-wrapper {
+  min-height: 100vh;
+  background: #fff;
+}
+.dashboard-main {
+  flex-grow: 1;
+}
+.card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+.badge {
+  font-size: 1rem;
+  font-weight: 500;
+}
+@media (max-width: 900px) {
+  .dashboard-content .card {
+    margin-left: -8px;
+    margin-right: -8px;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 576px) {
+  .dashboard-wrapper {
+    flex-direction: column !important;
+  }
+  .dashboard-main {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .dashboard-content .card {
+    margin-left: -8px;
+    margin-right: -8px;
+    border-radius: 10px;
+  }
+  .table th, .table td {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.95rem;
+  }
+  .pagination {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .dashboard-content .btn {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}

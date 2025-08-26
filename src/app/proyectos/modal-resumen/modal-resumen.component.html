@@ -1,0 +1,64 @@
+<div class="container-fluid p-3">
+  <div class="card shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="fw-bold mb-0">Resumen del Proyecto / Obra</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()"></button>
+    </div>
+    <div class="card-body">
+      <div class="d-flex gap-2 mb-3">
+        <button class="btn btn-primary d-flex align-items-center gap-2" (click)="cerrar()">
+          <i class="fa fa-ban"></i> Cerrar
+        </button>
+        <button class="btn btn-primary d-flex align-items-center gap-2" (click)="cerrar()">
+          <i class="fa fa-arrow-right"></i> Salir
+        </button>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-3">
+          <div class="card shadow-sm border-warning">
+            <div class="card-body text-center bg-warning-subtle">
+              <div class="fs-3 fw-bold text-warning">S/ {{resumen.costoObra | number:'1.2-2'}}<br><small class="fs-6">TOTAL</small></div>
+              <hr>
+              <div class="text-start mb-2">IGV : <span class="fw-bold">S/ {{resumen.igv | number:'1.2-2'}}</span></div>
+              <div class="text-start mb-2">Monto : <span class="fw-bold">S/ {{resumen.monto | number:'1.2-2'}}</span></div>
+              <div class="fw-bold text-warning">COSTO DE OBRA</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="card shadow-sm border-success">
+            <div class="card-body text-center bg-success-subtle">
+              <div class="fs-3 fw-bold text-success">S/ {{resumen.pagado | number:'1.2-2'}}<br><small class="fs-6">PAGADO</small></div>
+              <hr>
+              <div class="text-start mb-2">Pendiente : <span class="fw-bold">S/ {{resumen.pendiente | number:'1.2-2'}}</span></div>
+              <div class="text-start mb-2">Total : <span class="fw-bold">S/ {{resumen.totalPagos | number:'1.2-2'}}</span></div>
+              <div class="fw-bold text-success">PAGOS DE OBRA</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="card shadow-sm border-danger">
+            <div class="card-body text-center bg-danger-subtle">
+              <div class="fs-3 fw-bold text-danger">S/ {{resumen.gastos | number:'1.2-2'}}<br><small class="fs-6">TOTAL</small></div>
+              <hr>
+              <div class="text-start mb-2">Viaticos : <span class="fw-bold">S/ {{resumen.viaticos | number:'1.2-2'}}</span></div>
+              <div class="text-start mb-2">Proy/Obra : <span class="fw-bold">S/ {{resumen.gastosObra | number:'1.2-2'}}</span></div>
+              <div class="fw-bold text-danger">GASTOS DE OBRA</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="card shadow-sm border-success">
+            <div class="card-body text-center bg-success-subtle">
+              <div class="fs-3 fw-bold text-success">S/ {{resumen.utilidad | number:'1.2-2'}}<br><small class="fs-6">TOTAL</small></div>
+              <hr>
+              <div class="text-start mb-2">Gastos : <span class="fw-bold">S/ {{resumen.gastos | number:'1.2-2'}}</span></div>
+              <div class="text-start mb-2">Costo Obra : <span class="fw-bold">S/ {{resumen.costoObra | number:'1.2-2'}}</span></div>
+              <div class="fw-bold text-success">UTILIDAD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.dashboard-wrapper {
+  min-height: 100vh;
+}
+.table {
+  font-size: 1rem;
+}
+.badge {
+  font-size: 0.95rem;
+  padding: 0.4em 0.8em;
+}
+@media (max-width: 768px) {
+  .table {
+    font-size: 0.9rem;
+  }
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.3em 0.6em;
+  }
+}

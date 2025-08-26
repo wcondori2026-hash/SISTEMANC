@@ -1,0 +1,116 @@
+<div class="dashboard-wrapper d-flex flex-column flex-md-row">
+  <app-menu [menuActivo]="menuActivo" (cerrar)="cerrarMenu()"></app-menu>
+  <div class="dashboard-main flex-grow-1">
+    <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
+    <section class="dashboard-content main__form mt-3">
+      <div class="container-fluid py-3">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 gap-2">
+          <div class="d-flex flex-column flex-md-row gap-2 w-100">
+            <button class="btn btn-primary" (click)="grabar()"><i class="fa fa-save me-1"></i> Grabar</button>
+            <button class="btn btn-primary" (click)="cargarAnexos()"><i class="fa fa-upload me-1"></i> Carga Anexos</button>
+            <button class="btn btn-primary" (click)="abrirModalGastos()"><i class="fa fa-table"></i> Gastos</button>
+            <button class="btn btn-primary" (click)="cerrar()"><i class="fa fa-times me-1"></i> Cerrar</button>
+            <button class="btn btn-primary" (click)="salir()"><i class="fa fa-arrow-right me-1"></i> Salir</button>
+          </div>
+          <div class="dropdown mt-2 mt-md-0">
+            <button class="btn btn-danger dropdown-toggle fw-bold w-100 w-md-auto" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{estado}}
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let e of estados"><a class="dropdown-item" href="#">{{e}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <fieldset class="border rounded p-3 mb-3">
+          <legend class="float-none w-auto px-2">Datos Asignación</legend>
+          <div class="row g-2">
+            <div class="col-md-4">
+              <label class="form-label">Responsable :</label>
+              <select class="form-select" [(ngModel)]="responsable">
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col-md-12">
+              <label class="form-label">Descripción :</label>
+              <textarea class="form-control" rows="2" [(ngModel)]="descripcion"></textarea>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="border rounded p-3 mb-3">
+          <legend class="float-none w-auto px-2">Datos Asignación</legend>
+          <div class="row g-2 mb-2">
+            <div class="col-md-3">
+              <label class="form-label">Monto :</label>
+              <input type="text" class="form-control" [(ngModel)]="monto" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Fecha Asignación :</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="/ /" [(ngModel)]="fechaAsignacion" />
+                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Descripción :</label>
+              <input type="text" class="form-control" [(ngModel)]="descripcion" />
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+              <button class="btn btn-outline-secondary w-100" (click)="agregarAsignacion()">Agregado</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Nro</th>
+                  <th>Monto</th>
+                  <th>Fecha</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let a of asignaciones">
+                  <td>{{a.nro}}</td>
+                  <td>S/. {{a.monto | number:'1.2-2'}}</td>
+                  <td>{{a.fecha}}</td>
+                  <td>{{a.descripcion}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </fieldset>
+        <fieldset class="border rounded p-3 mb-3">
+          <legend class="float-none w-auto px-2">Rendición</legend>
+          <div class="row g-2 mb-2">
+            <div class="col-md-3">
+              <label class="form-label">Datos :</label>
+              <input type="text" class="form-control" [(ngModel)]="datos" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Fecha Cierre :</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="/ /" [(ngModel)]="fechaCierre" />
+                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Devolución :</label>
+              <input type="text" class="form-control" [(ngModel)]="devolucion" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Reembolso :</label>
+              <input type="text" class="form-control" [(ngModel)]="reembolso" />
+            </div>
+            <div class="col-md-12">
+              <label class="form-label">Descripción :</label>
+              <textarea class="form-control" rows="2" [(ngModel)]="descripcionRendicion"></textarea>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+    <app-modal-gastos *ngIf="mostrarModalGastos" [gastos]="gastosEjemplo" [total]="totalGastos" (cerrar)="cerrarModalGastos()" (salir)="salir()"></app-modal-gastos>
+  </div>
+</div>

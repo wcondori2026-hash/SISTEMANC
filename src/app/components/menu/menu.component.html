@@ -1,0 +1,160 @@
+<!-- Botón hamburguesa solo visible en móvil -->
+<button class="btn btn-hamburger d-md-none" (click)="abrirMenu()">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<aside class="menu" [class.menu-activo]="menuActivo">
+  <img src="/assets/images/logo-nc-quality.png" alt="NC Quality" class="menu__logo" />
+  <a class="btn btn-close-menu" (click)="cerrarMenu()">X</a>
+  <h3 class="text-center" style="border-bottom: 2px solid #9a9a9b;"><i class="fa-solid fa-house-chimney"></i> MIS OPERACIONES</h3>
+
+  <!-- ADMINISTRATIVOS -->
+  <div class="menu__section">
+    <div class="section__head">
+      <img src="/assets/images/icono-home.svg" alt="Home" />
+      <h6>ADMINISTRATIVOS</h6>
+    </div>
+    <ul class="section__list">
+      <li>
+        <a class="pointer d-flex align-items-center" [routerLink]="['/compras']" routerLinkActive="list__active">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de compras/gastos</span>
+        </a>
+      </li>
+      <li>
+        <a class="pointer d-flex align-items-center" [routerLink]="['/proyectos']" routerLinkActive="list__active">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Gestión de proyectos/obras</span>
+        </a>
+      </li>
+      <li>
+        <a class="pointer d-flex align-items-center" [routerLink]="['/cotizacion']" routerLinkActive="list__active">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de cotizaciones</span>
+        </a>
+      </li>
+      <li>
+        <a class="pointer d-flex align-items-center" [routerLink]="['/ventas']" routerLinkActive="list__active">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de ventas</span>
+        </a>
+      </li>
+      <li>
+        <a class="pointer d-flex align-items-center" [routerLink]="['/viaticos']" routerLinkActive="list__active">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de viáticos</span>
+        </a>
+      </li>
+  <!-- Eliminado duplicado de Registro de cotizaciones -->
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de EECC de Bancos</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Planilla de empleados</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de inventarios</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de almacén</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Gestión de atención al cliente</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Reportes</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" routerLink="/dashboard">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Dashboard</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SEGURIDAD -->
+  <div class="menu__section">
+    <div class="section__head">
+      <img src="/assets/images/icono-seguridad.svg" alt="Seguridad" />
+      <h6>SEGURIDAD</h6>
+    </div>
+    <ul class="section__list">
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Empleadores</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Empresas</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Perfiles</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CONFIGURACIÓN -->
+  <div class="menu__section">
+    <div class="section__head">
+      <img src="/assets/images/icono-configuracion.svg" alt="Configuración" />
+      <h6>CONFIGURACIÓN</h6>
+    </div>
+    <ul class="section__list">
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de compras/gastos</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Gestión de proyectos/obras</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de ventas</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de viáticos</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-items-center" href="#">
+          <span class="list__icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="ms-2">Registro de cotizaciones</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</aside>
