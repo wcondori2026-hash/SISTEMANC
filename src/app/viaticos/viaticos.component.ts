@@ -7,10 +7,10 @@ import { MenuComponent } from '../components/menu/menu.component';
 import { BreadcrumbComponent } from '../components/breadcrumb/breadcrumb.component';
 
 @Component({
+  standalone: true,
   selector: 'app-viaticos',
   templateUrl: './viaticos.component.html',
   styleUrls: ['./viaticos.component.css'],
-  standalone: true,
   imports: [CommonModule, FormsModule, MenuComponent, BreadcrumbComponent],
 })
 export class ViaticosComponent implements OnInit {

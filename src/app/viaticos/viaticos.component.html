@@ -3,145 +3,154 @@
   <div class="dashboard-main flex-grow-1">
     <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
     <section class="dashboard-content main__form mt-3">
-      <div class="container-fluid px-2 px-md-5">
-        <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center mb-3 gap-2">
-          <div class="d-flex flex-column flex-md-row gap-2 w-100">
-            <button class="btn btn-primary d-flex align-items-center gap-2 fw-bold" (click)="nuevo()">
-              <i class="fa fa-plus"></i> Nuevo
-            </button>
-            <button class="btn btn-primary d-flex align-items-center gap-2" (click)="editar()">
-              <i class="fa fa-edit"></i> Editar
-            </button>
-            <button class="btn btn-primary d-flex align-items-center gap-2" (click)="anular()">
-              <i class="fa fa-ban"></i> Anular
-            </button>
-            <button class="btn btn-primary d-flex align-items-center gap-2" (click)="exportarExcel()">
-              <i class="fa fa-file-excel"></i> Exportar Excel
-            </button>
-            <button class="btn btn-primary d-flex align-items-center gap-2" (click)="salir()">
-              <i class="fa fa-arrow-right"></i> Salir
-            </button>
+      <div class="container-fluid px-3">
+         <div class="row">
+          <div class="col-12">
+            <div class="mb-3 d-flex flex-column flex-md-row border-0 p-0">
+             <div class="d-flex flex-column flex-md-row w-100">
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto active" (click)="nuevo()">
+                  <i class="ri-file-line me-2"></i> Nuevo
+                </button>
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="editar()">
+                  <i class="ri-pencil-line me-2"></i> Editar
+                </button>
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="anular()">
+                  <i class="ri-file-excel-line me-2"></i> Exp. Excel
+                </button>
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="exportarExcel()">
+                 <i class="ri-arrow-go-forward-line me-2"></i> Salir
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="card mb-3 shadow-sm">
-          <div class="card-header fw-bold">Filtro</div>
-          <div class="card-body p-3">
-            <form class="row g-2 g-md-3 align-items-end" (ngSubmit)="buscar()">
-              <div class="row g-2 g-md-3">
-                <div class="col-12 col-md-9">
+         </div>
+         <div class="row">
+           <div class="col-12">
+             <div class="card compras-filtros-card mb-4">
+                <div class="card-header fw-bold">Filtro</div>
+                <form class="card-body compras-filtros p-2 p-md-3" autocomplete="off" (ngSubmit)="buscar()">
                   <div class="row g-2 g-md-3">
-                    <div class="col-12 col-md-4">
-                      <label class="form-label">Codigo de Cotización:</label>
-                      <input type="text" class="form-control" [(ngModel)]="filtro.codigo" name="codigo" />
-                    </div>
-                    <div class="col-12 col-md-4">
-                      <label class="form-label">Proyecto / Obra:</label>
-                      <input type="text" class="form-control" [(ngModel)]="filtro.proyecto" name="proyecto" />
-                    </div>
-                    <div class="col-12 col-md-4">
-                      <label class="form-label">Fecha :</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="/ /" [(ngModel)]="filtro.fecha" name="fecha" />
-                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                    <div class="col-12 col-md-10">
+                     <div class="row g-2 g-md-3">
+                        <div class="col-12 col-md-4">
+                          <label class="form-label">Codigo de Cotización:</label>
+                          <input type="text" class="form-control" [(ngModel)]="filtro.codigo" name="codigo" />
+                        </div>
+                        <div class="col-12 col-md-4">
+                          <label class="form-label">Proyecto / Obra:</label>
+                          <input type="text" class="form-control" [(ngModel)]="filtro.proyecto" name="proyecto" />
+                        </div>
+                        <div class="col-12 col-md-4">
+                          <label class="form-label">Fecha :</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="/ /" [(ngModel)]="filtro.fecha" name="fecha" />
+                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                          <label class="form-label">Responsable :</label>
+                          <select class="form-select" [(ngModel)]="filtro.responsable" name="responsable">
+                            <option value="">Seleccione</option>
+                            <!-- Opciones dinámicas si aplica -->
+                          </select>
+                        </div>
+                        <div class="col-12 col-md-4">
+                          <label class="form-label">Etapa :</label>
+                          <select class="form-select" [(ngModel)]="filtro.etapa" name="etapa">
+                            <option value="">Nuevo/Asignado/Anulado/Cerrado</option>
+                            <option *ngFor="let etapa of etapas" [value]="etapa">{{etapa}}</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                      <label class="form-label">Responsable :</label>
-                      <select class="form-select" [(ngModel)]="filtro.responsable" name="responsable">
-                        <option value="">Seleccione</option>
-                        <!-- Opciones dinámicas si aplica -->
-                      </select>
-                    </div>
-                    <div class="col-12 col-md-4">
-                      <label class="form-label">Etapa :</label>
-                      <select class="form-select" [(ngModel)]="filtro.etapa" name="etapa">
-                        <option value="">Nuevo/Asignado/Anulado/Cerrado</option>
-                        <option *ngFor="let etapa of etapas" [value]="etapa">{{etapa}}</option>
-                      </select>
+                    <div class="col-12 col-md-2 d-flex align-items-top">
+                      <div class="d-flex justify-content-center w-100">
+                        <button type="submit" class="btn btn-dark w-100 w-md-auto" style="height: 48px; font-size: 1rem; font-weight: bolder; margin-top: 1.5rem !important;">
+                         Buscar
+                       </button>
+                     </div>
                     </div>
                   </div>
+                </form>
+              </div>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-12">
+             <div class="card compras-resultado-card mb-4">
+              <div class="card-header fw-bold">Resultado</div>
+              <div class="card-body p-2 p-md-3">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped align-middle compras-table-padding">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Nro</th>
+                        <th>Código Cotización</th>
+                        <th>Proyecto/Obra</th>
+                        <th>Fecha</th>
+                        <th>Fecha Cierre</th>
+                        <th>Monto</th>
+                        <th>Gastos</th>
+                        <th>Devolución</th>
+                        <th>Reembolso</th>
+                        <th>Etapa</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let v of viaticos">
+                        <td>{{v.nro}}</td>
+                        <td>{{v.codigo}}</td>
+                        <td>{{v.proyecto}}</td>
+                        <td>{{v.fecha}}</td>
+                        <td>{{v.cierre}}</td>
+                        <td>S/ {{v.monto | number:'1.2-2'}}</td>
+                        <td>S/ {{v.gastos | number:'1.2-2'}}</td>
+                        <td>S/ {{v.devolucion | number:'1.2-2'}}</td>
+                        <td>S/ {{v.reembolso | number:'1.2-2'}}</td>
+                        <td>
+                          <span class="badge" [ngClass]="{
+                            'bg-warning text-dark': v.etapa === 'Nuevo',
+                            'bg-orange': v.etapa === 'Asignado',
+                            'bg-danger': v.etapa === 'Anulado',
+                            'bg-success': v.etapa === 'Cerrado'
+                          }">{{v.etapa}}</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-secondary me-1"><i class="fa fa-file"></i></button>
+                          <button class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <div class="col-12 col-md-3 d-flex align-items-center">
-                   <button class="btn btn-primary w-100 w-md-auto" type="submit">
-                    <i class="fa fa-search"></i> Buscar
-                  </button>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="col-12 col-md-3">
+                    <label class="form-label me-2">Cantidad de filas:</label>
+                    <select class="form-select d-inline-block w-auto" [(ngModel)]="pageSize" name="pageSize" (change)="cambiarPagina(1)">
+                      <option [value]="10">10</option>
+                      <option [value]="20">20</option>
+                      <option [value]="50">50</option>
+                    </select>
+                  </div>
+                  <nav>
+                    <ul class="pagination mb-0">
+                      <li class="page-item" [class.disabled]="page === 1">
+                        <button class="page-link" (click)="cambiarPagina(page - 1)" [disabled]="page === 1">&lt;</button>
+                      </li>
+                      <li class="page-item" *ngFor="let p of [].constructor(getTotalPages()); let i = index" [class.active]="page === i + 1">
+                        <button class="page-link" (click)="cambiarPagina(i + 1)">{{i + 1}}</button>
+                      </li>
+                      <li class="page-item" [class.disabled]="page === getTotalPages() || total === 0">
+                        <button class="page-link" (click)="cambiarPagina(page + 1)" [disabled]="page === getTotalPages() || total === 0">&gt;</button>
+                      </li>
+                    </ul>
+                  </nav>
                 </div>
               </div>
-            </form>
-          </div>
-        </div>
-        <div class="card mb-3 shadow-sm">
-          <div class="card-header fw-bold">Resultado</div>
-          <div class="card-body p-2 p-md-3">
-            <div class="table-responsive">
-              <table class="table table-bordered table-striped align-middle compras-table-padding">
-                <thead class="table-light">
-                  <tr>
-                    <th>Nro</th>
-                    <th>Código Cotización</th>
-                    <th>Proyecto/Obra</th>
-                    <th>Fecha</th>
-                    <th>Fecha Cierre</th>
-                    <th>Monto</th>
-                    <th>Gastos</th>
-                    <th>Devolución</th>
-                    <th>Reembolso</th>
-                    <th>Etapa</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let v of viaticos">
-                    <td>{{v.nro}}</td>
-                    <td>{{v.codigo}}</td>
-                    <td>{{v.proyecto}}</td>
-                    <td>{{v.fecha}}</td>
-                    <td>{{v.cierre}}</td>
-                    <td>S/ {{v.monto | number:'1.2-2'}}</td>
-                    <td>S/ {{v.gastos | number:'1.2-2'}}</td>
-                    <td>S/ {{v.devolucion | number:'1.2-2'}}</td>
-                    <td>S/ {{v.reembolso | number:'1.2-2'}}</td>
-                    <td>
-                      <span class="badge" [ngClass]="{
-                        'bg-warning text-dark': v.etapa === 'Nuevo',
-                        'bg-orange': v.etapa === 'Asignado',
-                        'bg-danger': v.etapa === 'Anulado',
-                        'bg-success': v.etapa === 'Cerrado'
-                      }">{{v.etapa}}</span>
-                    </td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-secondary me-1"><i class="fa fa-file"></i></button>
-                      <button class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
-            <div class="d-flex justify-content-between align-items-center p-2">
-              <div class="col-12 col-md-3">
-                <label class="form-label me-2">Cantidad de filas:</label>
-                <select class="form-select d-inline-block w-auto" [(ngModel)]="pageSize" name="pageSize" (change)="cambiarPagina(1)">
-                  <option [value]="10">10</option>
-                  <option [value]="20">20</option>
-                  <option [value]="50">50</option>
-                </select>
-              </div>
-              <nav>
-                <ul class="pagination mb-0">
-                  <li class="page-item" [class.disabled]="page === 1">
-                    <button class="page-link" (click)="cambiarPagina(page - 1)" [disabled]="page === 1">&lt;</button>
-                  </li>
-                  <li class="page-item" *ngFor="let p of [].constructor(getTotalPages()); let i = index" [class.active]="page === i + 1">
-                    <button class="page-link" (click)="cambiarPagina(i + 1)">{{i + 1}}</button>
-                  </li>
-                  <li class="page-item" [class.disabled]="page === getTotalPages() || total === 0">
-                    <button class="page-link" (click)="cambiarPagina(page + 1)" [disabled]="page === getTotalPages() || total === 0">&gt;</button>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
+           </div>
+         </div>
       </div>
     </section>
   </div>

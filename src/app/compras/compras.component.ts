@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
     FormsModule,
     MenuComponent,
     BreadcrumbComponent
-  ]
+]
 })
 export class ComprasComponent implements OnInit {
 

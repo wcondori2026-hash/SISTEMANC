@@ -28,8 +28,6 @@ export class RegistrarCotizacionComponent {
 
   grabar() { alert('Cotización grabada'); }
   cargarAnexos() { alert('Cargar anexos'); }
-  cerrar() { alert('Cerrar cotización'); }
-  salir() { alert('Salir'); }
 
   mostrarMenu() {
     this.menuActivo = true;
@@ -38,4 +36,6 @@ export class RegistrarCotizacionComponent {
   cerrarMenu(): void {
     this.menuActivo = false;
   }
+
+  filtrar(){}
 }

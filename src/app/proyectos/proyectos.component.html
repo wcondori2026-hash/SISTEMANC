@@ -4,88 +4,88 @@
   <div class="dashboard-main flex-grow-1">
     <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
     <section class="dashboard-content main__form mt-3">
-      <div class="container-fluid px-2 px-md-5">
+      <div class="container-fluid px-3">
         <!-- Toolbar y Filtros fuera de los tabs -->
         <div class="row">
           <div class="col-12">
-            <div class="compras-toolbar mb-3 d-flex flex-column flex-md-row gap-2 border-0 p-0" style="box-shadow:none;">
-              <div class="d-flex flex-column flex-md-row w-100 gap-2">
-                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="irANuevoProyecto()"><i class="fa fa-file me-2"></i> Nuevo</button>
-                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="fa fa-edit me-2"></i> Editar</button>
-                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="fa fa-times-circle me-2"></i> Anular</button>
+            <div class="mb-3 d-flex flex-column flex-md-row border-0 p-0">
+              <div class="d-flex flex-column flex-md-row w-100">
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto active" (click)="irANuevoProyecto()"><i class="ri-file-line me-2"></i> Nuevo</button>
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="ri-pencil-line me-2"></i> Editar</button>
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="ri-indeterminate-circle-line me-2"></i> Anular</button>
                 <div class="btn-group mb-2 mb-md-0 w-md-auto">
-                  <button type="button" class="btn btn-primary compras-btn fw-bold d-flex align-items-center dropdown-toggle w-100 w-md-auto" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-cogs me-2"></i> Exportar Excel
+                  <button type="button" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ri-file-excel-line me-2"></i> Exp. Excel
                   </button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Exportar todo</a></li>
                     <li><a class="dropdown-item" href="#">Exportar página</a></li>
                   </ul>
                 </div>
-                <button class="btn btn-primary compras-btn fw-bold d-flex align-items-center w-md-auto"><i class="fa fa-arrow-right me-2"></i> Salir</button>
+                <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto"><i class="ri-arrow-go-forward-line me-2"></i> Salir</button>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <div class="card mb-3 shadow-sm">
+            <div class="card compras-filtros-card mb-4">
               <div class="card-header fw-bold">Filtro</div>
-              <div class="card-body p-3">
-                <form class="row g-2 g-md-3 align-items-end compras-filtros" (ngSubmit)="filtrar()">
-                  <div class="row g-2 g-md-3">
-                    <div class="col-12 col-md-9">
-                      <div class="row g-2 g-md-3">
-                        <div class="col-12 col-md-3">
-                          <label class="form-label">Código de Cotización:</label>
-                          <input type="text" class="form-control" [(ngModel)]="filtroCodigo" name="codigo" />
-                        </div>
-                        <div class="col-12 col-md-3">
-                          <label class="form-label">Proyecto / Obra:</label>
-                          <input type="text" class="form-control" [(ngModel)]="filtroNombre" name="nombre" />
-                        </div>
-                        <div class="col-12 col-md-3">
-                          <label class="form-label">Fecha Inicio :</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="dd/mm/aaaa" [(ngModel)]="filtroFechaInicio" name="fechaInicio" />
-                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-3">
-                          <label class="form-label">Fecha Finaliz :</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" placeholder="dd/mm/aaaa" [(ngModel)]="filtroFechaFin" name="fechaFin" />
-                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-3">
-                          <label class="form-label">Responsable :</label>
-                          <select class="form-select" [(ngModel)]="filtroResponsable" name="responsable">
-                            <option value="">Seleccione</option>
-                            <!-- Puedes agregar opciones dinámicas aquí si lo deseas -->
-                          </select>
-                        </div>
-                        <div class="col-12 col-md-3">
-                          <label class="form-label">Etapa :</label>
-                          <select class="form-select" [(ngModel)]="filtroEstado" name="estado">
-                            <option value="">Todos</option>
-                            <option value="Nuevo">Nuevo</option>
-                            <option value="En proceso">En proceso</option>
-                            <option value="Finalizado">Finalizado</option>
-                            <option value="Pendiente">Pendiente</option>
-                            <option value="Anulado">Anulado</option>
-                          </select>
+              <form class="card-body compras-filtros p-2 p-md-3" autocomplete="off" (ngSubmit)="filtrar()">
+                <div class="row g-2 g-md-3">
+                  <div class="col-12 col-md-10">
+                    <div class="row g-2 g-md-3">
+                      <div class="col-12 col-md-3">
+                        <label class="form-label">Código de Cotización:</label>
+                        <input type="text" class="form-control" [(ngModel)]="filtroCodigo" name="codigo" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label class="form-label">Proyecto / Obra:</label>
+                        <input type="text" class="form-control" [(ngModel)]="filtroNombre" name="nombre" />
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label class="form-label">Fecha Inicio :</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="dd/mm/aaaa" [(ngModel)]="filtroFechaInicio" name="fechaInicio" />
+                          <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                         </div>
                       </div>
+                      <div class="col-12 col-md-3">
+                        <label class="form-label">Fecha Finaliz :</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="dd/mm/aaaa" [(ngModel)]="filtroFechaFin" name="fechaFin" />
+                          <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label class="form-label">Responsable :</label>
+                        <select class="form-select" [(ngModel)]="filtroResponsable" name="responsable">
+                          <option value="">Seleccione</option>
+                          <!-- Puedes agregar opciones dinámicas aquí si lo deseas -->
+                        </select>
+                      </div>
+                      <div class="col-12 col-md-3">
+                        <label class="form-label">Etapa :</label>
+                        <select class="form-select" [(ngModel)]="filtroEstado" name="estado">
+                          <option value="">Todos</option>
+                          <option value="Nuevo">Nuevo</option>
+                          <option value="En proceso">En proceso</option>
+                          <option value="Finalizado">Finalizado</option>
+                          <option value="Pendiente">Pendiente</option>
+                          <option value="Anulado">Anulado</option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="col-12 col-md-3 d-flex align-items-center">
-                      <button class="btn btn-primary w-100 w-md-auto" type="submit">
-                        <i class="fa fa-search me-2"></i> Buscar
+                  </div>
+                  <div class="col-12 col-md-2 d-flex align-items-top">
+                    <div class="d-flex justify-content-center w-100">
+                      <button type="submit" class="btn btn-dark w-100 w-md-auto" style="height: 48px; font-size: 1rem; font-weight: bolder; margin-top: 1.5rem !important;">
+                        Buscar
                       </button>
                     </div>
                   </div>
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
             <!-- Tabs solo para el card de listado/calendario -->
             <div class="card shadow-sm mb-4">

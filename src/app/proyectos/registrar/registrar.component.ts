@@ -25,7 +25,7 @@ export class RegistrarProyectoComponent implements OnInit {
 
   constructor(private proyectosService: ProyectosService, private dialog: MatDialog) {}
 
-    abrirModalResumen() {
+  abrirModalResumen() {
     this.dialog.open(ModalResumenComponent, {
       width: '90vw',
       maxWidth: '100vw',

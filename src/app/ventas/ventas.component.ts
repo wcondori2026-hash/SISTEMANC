@@ -69,4 +69,6 @@ export class VentasComponent {
   cerrarMenu() {
     this.menuActivo = false;
   }
+
+  filtrar(){}
 }

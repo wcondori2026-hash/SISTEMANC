@@ -4,14 +4,11 @@
     <div class="card-body">
       <div class="d-flex flex-wrap gap-2 mb-3">
         <input type="file" #fileInput class="d-none" (change)="importarArchivo($event)" />
-        <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" (click)="fileInput.click()">
-          <i class="fa fa-upload"></i> Seleccionar archivo
+        <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="fileInput.click()">
+          <i class="fa fa-upload mr-2"></i> Seleccionar archivo
         </button>
-        <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" (click)="cerrar()">
-          <i class="fa fa-ban"></i> Cerrar
-        </button>
-        <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" (click)="cerrar()">
-          <i class="fa fa-arrow-right"></i> Salir
+        <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="cerrar()">
+          <i class="fa fa-ban mr-2"></i> Cerrar
         </button>
       </div>
       <div class="table-responsive">

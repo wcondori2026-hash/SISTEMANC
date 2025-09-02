@@ -3,43 +3,45 @@
   <div class="dashboard-main flex-grow-1">
     <app-breadcrumb [menuActivo]="menuActivo" (mostrarMenu)="mostrarMenu()"></app-breadcrumb>
     <section class="dashboard-content main__form mt-3">
-      <div class="container-fluid px-2 px-md-5">
-        <!-- Barra de botones de acción -->
-        <div class="d-flex flex-wrap align-items-center mb-3 gap-1">
-          <button class="btn btn-primary fw-bold d-flex align-items-center gap-2">
-            <i class="fa fa-check"></i> Grabar
-          </button>
-          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalActividades()">
-            <i class="fa fa-table"></i> Actividades
-          </button>
-          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalGastos()">
-            <i class="fa fa-table"></i> Gastos
-          </button>
-          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalPagos()">
-            <i class="fa fa-table"></i> Pagos Obra
-          </button>
-            <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalResumen()">
-              <i class="fa fa-table"></i> Resumen de Obra
-            </button>
-          <button class="btn btn-primary d-flex align-items-center gap-2" (click)="abrirModalAnexos()">
-            <i class="fa fa-upload"></i> Cargar Anexos
-          </button>
-          <button class="btn btn-primary d-flex align-items-center gap-2">
-            <i class="fa fa-ban"></i> Cerrar
-          </button>
-          <button class="btn btn-primary d-flex align-items-center gap-2">
-            <i class="fa fa-arrow-right"></i> Salir
-          </button>
-          <div class="dropdown ms-md-auto mt-2 mt-md-0">
-            <button class="btn btn-danger dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Nuevo
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">En Proceso</a></li>
-              <li><a class="dropdown-item" href="#">Finalizado</a></li>
-              <li><a class="dropdown-item" href="#">Pendiente</a></li>
-              <li><a class="dropdown-item" href="#">Anulado</a></li>
-            </ul>
+      <div class="container-fluid px-3">
+        <div class="row">
+          <div class="col-12">
+             <div class="mb-3 d-flex flex-column flex-md-row border-0 p-0">
+               <div class="d-flex flex-column flex-md-row w-100">
+                 <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto active">
+                   <i class="fa fa-check"></i> Grabar
+                 </button>
+                 <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="abrirModalActividades()">
+                   <i class="fa fa-table"></i> Actividades
+                 </button>
+                 <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="abrirModalGastos()">
+                   <i class="fa fa-table"></i> Gastos
+                 </button>
+                 <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="abrirModalPagos()">
+                   <i class="fa fa-table"></i> Pagos Obra
+                 </button>
+                   <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="abrirModalResumen()">
+                     <i class="fa fa-table"></i> Resumen de Obra
+                   </button>
+                 <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" (click)="abrirModalAnexos()">
+                   <i class="fa fa-upload"></i> Cargar Anexos
+                 </button>
+                 <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto" [routerLink]="'/proyectos'">
+                   <i class="fa fa-ban"></i> Cerrar
+                 </button>
+                 <div class="dropdown ms-md-auto mt-2 mt-md-0">
+                   <button style="min-width: 120px;" class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     Nuevo
+                   </button>
+                   <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="#">En Proceso</a></li>
+                     <li><a class="dropdown-item" href="#">Finalizado</a></li>
+                     <li><a class="dropdown-item" href="#">Pendiente</a></li>
+                     <li><a class="dropdown-item" href="#">Anulado</a></li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
           </div>
         </div>
         <!-- Aquí va el contenido del formulario, basado en la imagen adjunta -->
@@ -185,7 +187,7 @@
                       <option [ngValue]="null">Seleccione</option>
                       <option *ngFor="let r of responsables" [ngValue]="r.id">{{r.nombre}}</option>
                     </select>
-                    <button class="btn btn-outline-primary">Agregar</button>
+                    <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto">Agregar</button>
                   </div>
                 </div>
                 <table class="table table-bordered">
@@ -224,7 +226,7 @@
                       <option [ngValue]="null">Seleccione</option>
                       <option *ngFor="let i of integrantes" [ngValue]="i.id">{{i.nombre}}</option>
                     </select>
-                    <button class="btn btn-outline-primary">Agregar</button>
+                    <button class="compras-btn-nuevo d-flex align-items-center mb-2 mb-md-0 w-md-auto">Agregar</button>
                   </div>
                 </div>
                 <table class="table table-bordered">
